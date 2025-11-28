@@ -168,36 +168,12 @@ body {
 .sh-meta {
     font-size: 12px;
     margin-bottom: 20px;
-    color: #666;
-    line-height: 1.4;
-}
-
-.sh-meta-author,
-.sh-meta-date {
-    display: inline;
-}
-
-.sh-meta-date::before {
-    content: '';
-    display: inline-block;
-    margin: 0 4px;
-}
-
-.sh-featured-image {
-    margin-bottom: 20px;
 }
 
 .sh-featured-image img {
     width: 100%;
     height: auto;
-    display: block;
-}
-
-.sh-featured-caption {
-    font-size: 12px;
-    color: #999;
-    margin-top: 8px;
-    font-style: italic;
+    margin-bottom: 20px;
 }
 
 /* ARTICLE BODY */
@@ -220,30 +196,9 @@ body {
     margin: 20px 0 !important;
 }
 
-/* TAGS */
-.sh-tags {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    font-size: 12px;
-}
-
-.sh-tag {
-    display: inline-block;
-    color: #666;
-    margin-right: 8px;
-    text-transform: lowercase;
-}
-
-.sh-tag:not(:last-child)::after {
-    content: '';
-}
-
 /* SUGGESTED ARTICLES */
 .sh-suggested {
     margin-top: 45px;
-    position: relative;
 }
 
 .sh-suggested-title {
@@ -251,34 +206,6 @@ body {
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-/* Wrapper for shortcode output */
-.sh-suggested-wrapper {
-    margin-top: 15px;
-}
-
-/* Only apply grid to the direct child container from shortcode */
-.sh-suggested-wrapper > *:first-child {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    margin: 0;
-}
-
-/* Remove default list styling if it's a ul */
-.sh-suggested-wrapper ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Responsive: Single column on mobile */
-@media (max-width: 768px) {
-    .sh-suggested-wrapper > *:first-child {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* SIDEBAR */
