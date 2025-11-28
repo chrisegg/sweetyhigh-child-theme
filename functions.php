@@ -52,12 +52,42 @@ function sh_set_generatepress_defaults( $defaults ) {
 }
 
 /**
- * Add CSS variables to GeneratePress CSS output
+ * Enqueue child styles AFTER GeneratePress dynamic CSS loads.
+ * This ensures our CSS loads last and overrides everything.
  */
-add_action( 'wp_head', 'sh_add_generatepress_css_variables', 100 );
-function sh_add_generatepress_css_variables() {
-	?>
-	<style id="sh-gp-css-variables" type="text/css">
+add_action( 'wp_enqueue_scripts', 'sh_child_enqueue_styles', 999 );
+function sh_child_enqueue_styles() {
+	// Load AFTER GeneratePress dynamic CSS
+	wp_enqueue_style(
+		'sh-child-style',
+		get_stylesheet_directory_uri() . '/style.css',
+		array( 'generate-style' ), // Dependency ensures it loads after GP base styles
+		filemtime( get_stylesheet_directory() . '/style.css' ) // Cache busting
+	);
+}
+
+/**
+ * Add CSS AFTER GeneratePress dynamic CSS output.
+ * GeneratePress outputs dynamic CSS via wp_head.
+ * We use priority 9999 to ensure our CSS loads AFTER GP's dynamic CSS.
+ * Also try GeneratePress-specific hooks if available.
+ */
+add_action( 'wp_head', 'sh_add_css_after_gp_dynamic', 9999 );
+
+// Try GeneratePress-specific hook if it exists
+if ( function_exists( 'generate_after_main_css' ) ) {
+	add_action( 'generate_after_main_css', 'sh_add_css_after_gp_dynamic' );
+}
+
+function sh_add_css_after_gp_dynamic() {
+	// Prevent double output if both hooks fire
+	static $output = false;
+	if ( $output ) {
+		return;
+	}
+	$output = true;
+	$css = '
+	/* CSS Variables - Complete SweetyHigh Design System */
 	:root {
 		--font-poppins: "__Poppins_7c73c7","__Poppins_Fallback_7c73c7";
 		--font-roboto-condensed: "__Roboto_Condensed_30398f","__Roboto_Condensed_Fallback_30398f";
@@ -192,7 +222,7 @@ function sh_add_generatepress_css_variables() {
 		--bs-gutter-y: 0;
 	}
 	
-	/* Override body styles */
+	/* CRITICAL: Override GeneratePress body styles - MUST come after GP dynamic CSS */
 	body {
 		font-family: var(--font-poppins) !important;
 		color: #595959 !important;
@@ -202,12 +232,12 @@ function sh_add_generatepress_css_variables() {
 		background-color: #fff !important;
 	}
 	
-	/* Override headings */
+	/* Override GeneratePress headings */
 	h1, h2, h3, h4, h5, h6 {
 		font-family: var(--font-roboto-condensed) !important;
 	}
 	
-	/* Override links */
+	/* Override GeneratePress links */
 	a {
 		color: var(--bs-link-color) !important;
 		text-decoration: none !important;
@@ -216,22 +246,9 @@ function sh_add_generatepress_css_variables() {
 	a:hover {
 		color: var(--bs-link-hover-color) !important;
 	}
-	</style>
-	<?php
-}
-
-/**
- * Enqueue child styles with high priority to override GeneratePress.
- */
-add_action( 'wp_enqueue_scripts', 'sh_child_enqueue_styles', 999 );
-function sh_child_enqueue_styles() {
-	// Parent theme style handle is "generate-style".
-	wp_enqueue_style(
-		'sh-child-style',
-		get_stylesheet_uri(),
-		array( 'generate-style' ),
-		wp_get_theme()->get( 'Version' )
-	);
+	';
+	
+	echo '<style id="sh-sweetyhigh-overrides" type="text/css">' . $css . '</style>';
 }
 
 /**
