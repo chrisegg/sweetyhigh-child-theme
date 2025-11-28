@@ -29,16 +29,39 @@ get_header();
 
                 <!-- META -->
                 <div class="sh-meta">
-                    <span class="sh-meta-author">By <?php the_author(); ?></span>
-                    <span class="sh-meta-date"> • <?php echo get_the_date(); ?></span>
-                    <span class="sh-meta-cat"> • <?php the_category(', '); ?></span>
+                    <span class="sh-meta-author"><?php the_author(); ?></span>
+                    <span class="sh-meta-date"><?php echo get_the_date(); ?></span>
                 </div>
 
+                <!-- FEATURED IMAGE -->
+                <?php if ( has_post_thumbnail() ) : ?>
+                <div class="sh-featured-image">
+                    <?php the_post_thumbnail( 'large' ); ?>
+                    <?php 
+                    $caption = get_the_post_thumbnail_caption();
+                    if ( $caption ) : ?>
+                        <p class="sh-featured-caption"><?php echo esc_html( $caption ); ?></p>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
                 
                 <!-- ARTICLE CONTENT -->
                 <div class="sh-content">
                     <?php the_content(); ?>
                 </div>
+
+                <!-- TAGS -->
+                <?php 
+                $tags = get_the_tags();
+                if ( $tags ) : ?>
+                <div class="sh-tags">
+                    <?php 
+                    foreach ( $tags as $tag ) {
+                        echo '<span class="sh-tag">' . esc_html( $tag->name ) . '</span>';
+                    }
+                    ?>
+                </div>
+                <?php endif; ?>
 
                 <!-- SUGGESTED ARTICLES -->
                 <div class="sh-suggested">
