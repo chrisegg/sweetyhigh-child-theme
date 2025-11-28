@@ -53,18 +53,16 @@ function sh_set_generatepress_defaults( $defaults ) {
 
 /**
  * Enqueue child styles AFTER GeneratePress dynamic CSS loads.
- * This ensures our CSS loads last and overrides everything.
+ * CRITICAL: This MUST load after GP's dynamic CSS or GP will override everything.
  */
-add_action( 'wp_enqueue_scripts', 'sh_child_enqueue_styles', 999 );
-function sh_child_enqueue_styles() {
-	// Load AFTER GeneratePress dynamic CSS
+add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_style(
 		'sh-child-style',
 		get_stylesheet_directory_uri() . '/style.css',
-		array( 'generate-style' ), // Dependency ensures it loads after GP base styles
-		filemtime( get_stylesheet_directory() . '/style.css' ) // Cache busting
+		array( 'generate-style' ), // IMPORTANT: loads AFTER GP
+		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
-}
+}, 999 );
 
 /**
  * Add CSS AFTER GeneratePress dynamic CSS output.
@@ -223,8 +221,9 @@ function sh_add_css_after_gp_dynamic() {
 	}
 	
 	/* CRITICAL: Override GeneratePress body styles - MUST come after GP dynamic CSS */
+	/* Use GP's CSS variables if available, fallback to our custom variables */
 	body {
-		font-family: var(--font-poppins) !important;
+		font-family: var(--gp--font-body, var(--font-poppins)) !important;
 		color: #595959 !important;
 		font-size: 13px !important;
 		font-weight: 400 !important;
@@ -233,8 +232,10 @@ function sh_add_css_after_gp_dynamic() {
 	}
 	
 	/* Override GeneratePress headings */
+	/* Use GP's CSS variables if available, fallback to our custom variables */
 	h1, h2, h3, h4, h5, h6 {
-		font-family: var(--font-roboto-condensed) !important;
+		font-family: var(--gp--font-heading, var(--font-roboto-condensed)) !important;
+		font-weight: 700 !important;
 	}
 	
 	/* Override GeneratePress links */
@@ -250,6 +251,14 @@ function sh_add_css_after_gp_dynamic() {
 	
 	echo '<style id="sh-sweetyhigh-overrides" type="text/css">' . $css . '</style>';
 }
+
+/**
+ * Disable GeneratePress content wrappers for full custom layout control.
+ * This prevents GP from injecting its own layout markup.
+ */
+add_filter( 'generate_show_entry_header', '__return_false' );
+add_filter( 'generate_show_entry_footer', '__return_false' );
+add_filter( 'generate_show_featured_image', '__return_false' );
 
 /**
  * Add image sizes for hero / cards (adjust as needed).
