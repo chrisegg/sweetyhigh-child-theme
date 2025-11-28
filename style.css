@@ -243,6 +243,7 @@ body {
 /* SUGGESTED ARTICLES */
 .sh-suggested {
     margin-top: 45px;
+    position: relative;
 }
 
 .sh-suggested-title {
@@ -250,6 +251,135 @@ body {
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+/* Wrapper for shortcode output */
+.sh-suggested-wrapper {
+    margin-top: 15px;
+}
+
+/* Style the shortcode output - target common WordPress post list structures */
+.sh-suggested-wrapper > ul,
+.sh-suggested-wrapper > div,
+.sh-suggested-wrapper ul,
+.sh-suggested-wrapper .related-posts,
+.sh-suggested-wrapper .rp-list,
+.sh-suggested-wrapper [class*="related"],
+.sh-suggested-wrapper [class*="posts"] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style individual post items */
+.sh-suggested li,
+.sh-suggested article,
+.sh-suggested .rp-item,
+.sh-suggested .related-post {
+    display: block;
+    position: relative;
+    margin-bottom: 0;
+}
+
+/* Style links */
+.sh-suggested a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+/* Category and Date Meta - target common meta patterns */
+.sh-suggested .post-meta,
+.sh-suggested .entry-meta,
+.sh-suggested .rp-meta,
+.sh-suggested .post-category,
+.sh-suggested .entry-category {
+    font-size: 12px;
+    color: #595959;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.sh-suggested .post-category a,
+.sh-suggested .entry-category a,
+.sh-suggested .category a {
+    text-transform: lowercase;
+    color: #595959;
+}
+
+.sh-suggested .post-date,
+.sh-suggested .entry-date,
+.sh-suggested .rp-date {
+    color: #595959;
+    font-size: 12px;
+}
+
+/* Images */
+.sh-suggested img,
+.sh-suggested .post-thumbnail img,
+.sh-suggested .entry-thumbnail img,
+.sh-suggested .rp-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.sh-suggested a:hover img {
+    transform: scale(1.02);
+}
+
+/* Titles */
+.sh-suggested h3,
+.sh-suggested .post-title,
+.sh-suggested .entry-title,
+.sh-suggested .rp-title,
+.sh-suggested .related-post-title {
+    font-family: var(--font-roboto-condensed);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: #212529;
+}
+
+.sh-suggested a:hover h3,
+.sh-suggested a:hover .post-title,
+.sh-suggested a:hover .entry-title,
+.sh-suggested a:hover .rp-title {
+    color: #f09;
+}
+
+/* Excerpts/Descriptions */
+.sh-suggested .post-excerpt,
+.sh-suggested .entry-excerpt,
+.sh-suggested .rp-excerpt,
+.sh-suggested p {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #595959;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* Responsive: Single column on mobile */
+@media (max-width: 768px) {
+    .sh-suggested-wrapper > ul,
+    .sh-suggested-wrapper > div,
+    .sh-suggested-wrapper ul,
+    .sh-suggested-wrapper .related-posts,
+    .sh-suggested-wrapper .rp-list,
+    .sh-suggested-wrapper [class*="related"],
+    .sh-suggested-wrapper [class*="posts"] {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* SIDEBAR */

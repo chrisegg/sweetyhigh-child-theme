@@ -65,8 +65,10 @@ get_header();
 
                 <!-- SUGGESTED ARTICLES -->
                 <div class="sh-suggested">
-                    <h2 class="sh-suggested-title">Suggested Articles</h2>
-                    <?php echo do_shortcode('[relatedposts]'); ?>
+                    <h2 class="sh-suggested-title">Suggested Articles:</h2>
+                    <div class="sh-suggested-wrapper">
+                        <?php echo do_shortcode('[relatedposts]'); ?>
+                    </div>
                 </div>
 
             </article>
