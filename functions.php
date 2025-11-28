@@ -221,7 +221,7 @@ function sh_add_css_after_gp_dynamic() {
 	}
 	
 	/* CRITICAL: Override GeneratePress body styles - MUST come after GP dynamic CSS */
-	/* Use GP's CSS variables if available, fallback to our custom variables */
+	/* Use GP CSS variables if available, fallback to our custom variables */
 	body {
 		font-family: var(--gp--font-body, var(--font-poppins)) !important;
 		color: #595959 !important;
@@ -232,7 +232,7 @@ function sh_add_css_after_gp_dynamic() {
 	}
 	
 	/* Override GeneratePress headings */
-	/* Use GP's CSS variables if available, fallback to our custom variables */
+	/* Use GP CSS variables if available, fallback to our custom variables */
 	h1, h2, h3, h4, h5, h6 {
 		font-family: var(--gp--font-heading, var(--font-roboto-condensed)) !important;
 		font-weight: 700 !important;
