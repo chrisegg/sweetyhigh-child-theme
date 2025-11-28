@@ -40,6 +40,11 @@ get_header();
                     <?php the_content(); ?>
                 </div>
 
+                <!-- ARTICLE CONTENT -->
+                <div class="sh-fullwidth-ad-top">
+                    <?php echo do_shortcode('[ad_block_2]'); ?>
+                </div>
+                
                 <!-- SUGGESTED ARTICLES -->
                 <div class="sh-suggested">
                     <h2 class="sh-suggested-title">Suggested Articles</h2>
