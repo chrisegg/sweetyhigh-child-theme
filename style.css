@@ -1,0 +1,233 @@
+/*
+ Theme Name: Sweety High GeneratePress Child
+ Theme URI: https://www.wpmantis.com/
+ Description: Custom magazine layout built on GeneratePress for Sweety High.
+ Author: WP Mantis
+ Author URI:   https://wpmantis.com
+ Template: generatepress
+ Version: 1.0.0
+*/
+
+/* Basic layout scaffolding – customize as needed */
+
+body {
+    background-color: #ffffff;
+}
+
+/* Main layout */
+
+.sh-site-main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Homepage sections */
+
+.sh-hero-section {
+    margin-bottom: 40px;
+}
+
+.sh-hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.sh-hero-main {
+    position: relative;
+}
+
+.sh-hero-main img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sh-hero-main-title {
+    margin-top: 12px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.sh-hero-side-list article {
+    margin-bottom: 18px;
+}
+
+/* Post cards */
+
+.sh-post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.sh-post-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sh-post-card-title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Category / archive */
+
+.sh-category-header {
+    margin-bottom: 24px;
+}
+
+.sh-category-title {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Single */
+
+.sh-single-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.sh-single-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.sh-single-meta {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Basic responsive tweak */
+
+@media (max-width: 768px) {
+    .sh-hero-grid,
+    .sh-post-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Single.php file styles */
+
+/* Root variables (copied from SweetyHigh) */
+:root {
+    --font-poppins: "__Poppins_7c73c7","__Poppins_Fallback_7c73c7";
+    --font-roboto-condensed: "__Roboto_Condensed_30398f","__Roboto_Condensed_Fallback_30398f";
+}
+
+/* Global typography */
+body {
+    font-family: var(--font-poppins);
+    color: #595959;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* FULL-WIDTH TOP AD */
+.sh-fullwidth-ad-top {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto 25px auto;
+}
+
+/* ARTICLE CONTAINER */
+#sh-article-container {
+    max-width: 1024px;
+    padding: 0 27px;
+    margin: 25px auto 0 auto;
+}
+
+/* TWO COLUMN GRID */
+.sh-article-grid {
+    display: grid;
+    grid-template-columns: 650px 1fr;
+    gap: 40px;
+}
+
+/* LEFT COLUMN CONTENT */
+.sh-article-left {
+    width: 100%;
+}
+
+.sh-title {
+    font-family: var(--font-roboto-condensed);
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.sh-meta {
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.sh-featured-image img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* ARTICLE BODY */
+.sh-content p {
+    margin-bottom: 18px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+/* INLINE IMAGES */
+.sh-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+/* INSTAGRAM EMBEDS */
+.instagram-media {
+    margin: 20px 0 !important;
+}
+
+/* SUGGESTED ARTICLES */
+.sh-suggested {
+    margin-top: 45px;
+}
+
+.sh-suggested-title {
+    font-family: var(--font-roboto-condensed);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* SIDEBAR */
+.sh-sidebar {
+    position: relative;
+}
+
+.sh-sidebar-sticky {
+    position: sticky;
+    top: 120px;
+}
+
+.sh-sidebar-ad {
+    margin-bottom: 30px;
+}
+
+/* RESPONSIVE FIX */
+@media(max-width: 900px) {
+    .sh-article-grid {
+        grid-template-columns: 1fr;
+    }
+    .sh-sidebar-sticky {
+        position: static;
+    }
+}
