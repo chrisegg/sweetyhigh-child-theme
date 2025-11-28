@@ -47,7 +47,7 @@ get_header();
                 
                 <!-- SUGGESTED ARTICLES -->
                 <div class="sh-suggested">
-                    <h2 class="sh-suggested-title">Suggested Articles</h2>
+                    <h2 class="sh-suggested-title">Suggested Articles:</h2>
                     <?php echo do_shortcode('[relatedposts]'); ?>
                 </div>
 

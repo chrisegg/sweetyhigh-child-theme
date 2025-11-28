@@ -196,7 +196,7 @@ body {
     margin: 20px 0 !important;
 }
 
-/* SUGGESTED ARTICLES */
+/* SUGGESTED ARTICLES - Match SweetyHigh layout */
 .sh-suggested {
     margin-top: 45px;
 }
@@ -204,8 +204,142 @@ body {
 .sh-suggested-title {
     font-family: var(--font-roboto-condensed);
     font-size: 22px;
+    font-weight: 400; /* Normal weight to match fw-normal */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+/* Style the shortcode output - match SweetyHigh structure */
+.sh-suggested .sh-related-posts {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.sh-suggested .sh-related-posts-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+}
+
+.sh-suggested .sh-related-post-item {
+    width: 100%;
+    display: block;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    transition: none;
+    margin-bottom: 0;
+    padding: 0 10px 20px 0;
+}
+
+.sh-suggested .sh-related-post-item:nth-child(even) {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+    .sh-suggested .sh-related-post-item {
+        width: 50%;
+    }
+}
+
+/* Meta section (category | date) */
+.sh-suggested .sh-related-post-meta {
+    font-size: 12px;
+    color: #595959;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.sh-suggested .sh-related-post-category {
+    text-transform: lowercase;
+    color: #595959;
+    text-decoration: none;
+}
+
+.sh-suggested .sh-related-post-date-separator {
+    width: 1px;
+    height: 12px;
+    background-color: #595959;
+    margin: 0 8px;
+}
+
+.sh-suggested .sh-related-post-date {
+    color: #595959;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Image wrapper - 16:9 ratio */
+.sh-suggested .sh-related-post-thumbnail {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #f5f5f5;
+}
+
+.sh-suggested .sh-related-post-thumbnail a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.sh-suggested .sh-related-post-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.sh-suggested .sh-related-post-item:hover .sh-related-post-thumbnail img {
+    transform: scale(1.02);
+}
+
+/* Title styling */
+.sh-suggested .sh-related-post-title {
+    font-family: var(--font-roboto-condensed);
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 20px;
+    line-height: 1.3;
+    margin: 0 0 0 0;
+}
+
+.sh-suggested .sh-related-post-title a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.sh-suggested .sh-related-post-title a:hover {
+    color: #f09;
+}
+
+/* Remove content wrapper styling */
+.sh-suggested .sh-related-post-content {
+    padding: 0;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .sh-suggested .sh-related-post-item {
+        width: 100% !important;
+        padding: 0 0 20px 0 !important;
+    }
 }
 
 /* SIDEBAR */
