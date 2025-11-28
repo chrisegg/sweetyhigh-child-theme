@@ -33,7 +33,7 @@ get_header();
                     <span class="sh-meta-date"><?php echo get_the_date(); ?></span>
                 </div>
 
-                <!-- FEATURED IMAGE -->
+                <!-- FEATURED IMAGE
                 <?php if ( has_post_thumbnail() ) : ?>
                 <div class="sh-featured-image">
                     <?php the_post_thumbnail( 'large' ); ?>
@@ -43,7 +43,7 @@ get_header();
                         <p class="sh-featured-caption"><?php echo esc_html( $caption ); ?></p>
                     <?php endif; ?>
                 </div>
-                <?php endif; ?>
+                <?php endif; ?> -->
                 
                 <!-- ARTICLE CONTENT -->
                 <div class="sh-content">
